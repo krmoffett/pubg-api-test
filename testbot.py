@@ -2,6 +2,8 @@
 import discord
 import asyncio
 import configparser
+import request
+import json
 
 client = discord.Client()
 config = configparser.ConfigParser()
@@ -9,6 +11,14 @@ config.read('config.ini')
 defaultConfig = config['DEFAULT']
 token = defaultConfig['token']
 prefix = defaultConfig['prefix']
+url = "url_here"
+
+header = {
+        "Authorization": "<api-key>",
+        "Accept": "application/vnd.api+json"
+}
+
+r = requests.get(url, headers=header)
 
 @client.event
 async def on_ready():
