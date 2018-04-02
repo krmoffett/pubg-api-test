@@ -31,9 +31,11 @@ async def on_ready():
 # Receive message
 async def on_message(message):
     usrIn = message.content.split()
+    if len(usrIn) < 2:
+        userIn.append('blank')
     preflen = len(prefix)
     response = ""
-    if usrIn[0][0:preflen] == prefix:
+    if message.content[0:preflen] == prefix:
         command = usrIn[0][preflen:]
         print ("User: " + message.author.name)
         print ("Message: " + message.content)
